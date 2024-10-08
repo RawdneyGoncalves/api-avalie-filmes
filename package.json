@@ -1,0 +1,28 @@
+{
+  "name": "api-avalie-filmes",
+  "version": "1.0.0",
+  "description": "## Introdução Este é o teste que nós da [Dolado](http://www.dolado.com.br) usamos para avaliar os candidatos de vagas para Backend. Do júnior ao sênior, todos são avaliados pelo mesmo teste mas por critérios distintos. Se você estiver participando de um processo seletivo para nossa equipe, certamente em algum momento receberá este link, mas caso você tenha chego aqui \"por acaso\", sinta-se convidado a desenvolver nosso teste e enviar uma mensagem para nós no e-mail `tech@dolado.com.br`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^5.0.0",
+    "inversify": "^6.0.2",
+    "jest": "^29.7.0",
+    "kod": "^1.0.0",
+    "mysql2": "^3.11.3",
+    "reflect-metadata": "^0.2.2",
+    "supertest": "^7.0.0",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.7.5",
+    "@types/supertest": "^6.0.2"
+  }
+}
