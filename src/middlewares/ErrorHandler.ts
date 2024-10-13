@@ -2,7 +2,7 @@ import { FastifyError, FastifyRequest, FastifyReply } from 'fastify';
 
 export async function errorHandler(
     error: FastifyError,
-    request: FastifyRequest,
+    _request: FastifyRequest,
     reply: FastifyReply
 ) {
     console.error(error);
