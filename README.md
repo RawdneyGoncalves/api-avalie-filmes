@@ -4,80 +4,124 @@
 
 API para avaliações de filmes com integração ao OMDB, construída com Fastify, TypeORM e InversifyJS. Arquitetura em camadas e testes com Jest e Supertest garantem qualidade e flexibilidade.
 
-## Experiência de Desenvolvimento
+## Tecnologias Utilizadas
 
-Durante o desenvolvimento, busquei criar uma API limpa e organizada, utilizando boas práticas de programação e separação de responsabilidades. O uso do TypeORM facilitou a integração com o banco de dados MySQL, enquanto o Fastify garantiu um desempenho eficiente nas requisições. A injeção de dependências com InversifyJS aumentou a modularidade e testabilidade do código.
-
-## Principais Decisões
-
-- **Framework:** Utilizei Fastify pela sua alta performance e facilidade de uso.
-- **Injeção de Dependências:** InversifyJS para promover uma arquitetura mais modular e testável.
-- **ORM:** TypeORM para facilitar a interação com o banco de dados MySQL.
-- **Validação:** `class-validator` e `class-transformer` para garantir a integridade dos dados.
-- **Testes:** Jest e Supertest para garantir a qualidade do código com testes unitários e de integração.
-- **Documentação:** Fastify Swagger para documentar os endpoints da API.
-- **Containerização:** Docker e Docker Compose para facilitar a configuração e execução da aplicação.
+- **Framework:** Fastify
+- **ORM:** TypeORM
+- **Injeção de Dependências:** InversifyJS
+- **Banco de Dados:** MySQL
+- **Validação:** class-validator e class-transformer
+- **Testes:** Jest e Supertest
+- **Documentação:** Fastify Swagger
+- **Containerização:** Docker e Docker Compose
 
 ## Estrutura do Projeto
 
+```
 api-avalie-filmes/
-
-├── src/ 
-│ 
-├── config/ 
-│ 
-├── controllers/ 
-│ 
-├── middlewares/ 
-│ 
-├── inversify/ 
-│ 
-├── repositories/ 
-│ 
-├── entities/ 
-│ 
-└── app.ts 
-├── package.json 
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── middlewares/
+│   ├── inversify/
+│   ├── repositories/
+│   ├── entities/
+│   └── app.ts
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
 └── tsconfig.json
+```
 
 ## Iniciando o Projeto
 
-Siga os passos abaixo para iniciar o projeto:
+### Pré-requisitos
 
-### 1. Clone o Repositório
+- Node.js (versão 18 ou superior)
+- Docker e Docker Compose
+
+### Passos para Iniciar
+
+1. **Clone o Repositório**
+
+   ```bash
+   git clone https://github.com/RawdneyGoncalves/api-avalie-filmes.git
+   cd api-avalie-filmes
+   ```
+
+2. **Configuração de Ambiente**
+
+   Crie um arquivo `.env` na raiz do projeto e configure as variáveis de ambiente necessárias:
+
+   ```
+   DB_HOST=db
+   DB_PORT=3306
+   DB_USER=root
+   DB_PASSWORD=password
+   DB_NAME=dolado
+   OMDB_API_KEY=sua_chave_api_omdb
+   ```
+
+   Substitua `sua_chave_api_omdb` pela sua chave real da API OMDB.
+
+3. **Iniciar com Docker**
+
+   Para iniciar a aplicação e o banco de dados usando Docker, execute:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   Isso irá construir a imagem da aplicação, iniciar os containers, executar as migrações e iniciar a API.
+
+4. **Acesso à API**
+
+   A API estará disponível em `http://localhost:3000`
+
+5. **Documentação da API**
+
+   Acesse a documentação Swagger em `http://localhost:3000/docs`
+
+### Desenvolvimento Local (Sem Docker)
+
+Se preferir rodar a aplicação localmente sem Docker:
+
+1. **Instale as Dependências**
+
+   ```bash
+   npm install
+   ```
+
+2. **Configure o Banco de Dados**
+
+   Certifique-se de ter um servidor MySQL rodando e atualize as configurações no arquivo `.env`.
+
+3. **Execute as Migrações**
+
+   ```bash
+   npm run migration:run
+   ```
+
+4. **Inicie a Aplicação**
+
+   ```bash
+   npm run dev
+   ```
+
+   A aplicação estará disponível em `http://localhost:3000`
+
+## Testes
+
+Para executar os testes:
 
 ```bash
-git clone git@github.com:RawdneyGoncalves/api-avalie-filmes.git
+npm test
 ```
 
-Instale as dependências necessárias usando npm:
+## Contribuindo
 
-```bash
-npm install
-```
-## Configuração do Banco de Dados
+Contribuições são bem-vindas! Por favor, leia o arquivo CONTRIBUTING.md para detalhes sobre nosso código de conduta e o processo para enviar pull requests.
 
-Docker: Se você não tiver um banco de dados MySQL em execução, você pode iniciá-lo com Docker. Use o seguinte comando:
+## Licença
 
-```bash
-docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=avaliemovies -p 3306:3306 -d mysql:latest
-```
-### Para criar as tabelas necessárias no banco de dados, execute:
-
-```bash
-npm run migration:run
-```
-
-## Inicie a Aplicação
-
-```bash
-npm run start
-
-
-A aplicação estará disponível em http://localhost:3000
-```
-
-### Acesse a Documentação
-```bash
-A documentação da API pode ser acessada em: http://localhost:3000/docs
-```
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
