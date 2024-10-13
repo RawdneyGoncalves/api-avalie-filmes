@@ -12,7 +12,7 @@ services:
       DB_USER: root
       DB_PASSWORD: password
       DB_NAME: dolado
-    command: /usr/local/bin/wait-for-it.sh db:3306 -- npm run start
+    command: sh -c "/usr/local/bin/wait-for-it.sh db:3306 -- npm run migration:run && npm start"
 
   db:
     image: mysql:8.0

@@ -15,4 +15,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD ["/usr/local/bin/wait-for-it.sh", "db:3306", "--", "npm", "start"]
+CMD ["/bin/sh", "-c", "/usr/local/bin/wait-for-it.sh db:3306 -- npm run migration:run && npm start"]

@@ -30,8 +30,13 @@ app.setErrorHandler(errorHandler);
 
 export const startApp = async () => {
     try {
-        await dataSource.initialize();
-        app.log.info('Conectado ao banco de dados');
+        await dataSource.initialize()
+        .then(() => {
+            app.log.info('Conectado ao banco de dados');
+        })
+        .catch((error) => {
+            app.log.error('Falha ao conectar ao banco de dados:', error);
+        });
 
         const movieReviewController = container.get<MovieReviewController>(TYPES.MovieReviewController);
 
